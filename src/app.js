@@ -10,7 +10,7 @@ import cors from "cors";
 const app = express();
 app.use(express.json());
 const corsOption = {
-  origin: "http://127.0.0.1:5500/index.html", // Allow only this origin
+  origin: "http://127.0.0.1:5500", // Allow only this origin
   methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
   allowedHeaders: ["Content-Type", "Authorization"], // Allowed custom headers
   optionsSuccessStatus: 200,
