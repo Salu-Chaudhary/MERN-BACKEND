@@ -17,6 +17,14 @@ app.use("/orders", orderRouter);
 
 app.use("/", authRouter);
 
+app.get("/", (req, res) => {
+  res.json({
+    status: "Success",
+    app: "E-COMMERCE-WEBSITE",
+    version: "1.0.0",
+  });
+});
+
 app.listen(config.port, () => {
   console.log(`Server is successfully running on:${config.port} port`);
 });
