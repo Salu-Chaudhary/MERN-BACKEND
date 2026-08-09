@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "T-Shirt",
+    "type": "Top",
+    "color": "White",
+    "size": ["S", "M", "L", "XL"],
+    "price": 500
+  },
+  {
+    "id": 2,
+    "name": "Jeans",
+    "type": "Bottom",
+    "color": "Blue",
+    "size": ["28", "30", "32", "34"],
+    "price": 1500
+  },
+  {
+    "id": 3,
+    "name": "Jacket",
+    "type": "Outerwear",
+    "color": "Black",
+    "size": ["M", "L", "XL"],
+    "price": 2500
+  },
+  {
+    "id": 4,
+    "name": "Kurta",
+    "type": "Traditional",
+    "color": "Green",
+    "size": ["M", "L"],
+    "price": 1200
+  },
+  {
+    "id": 5,
+    "name": "Saree",
+    "type": "Traditional",
+    "color": "Red",
+    "size": ["Free Size"],
+    "price": 3000
+  },
+  {
+    "id": 6,
+    "name": "Shorts",
+    "type": "Bottom",
+    "color": "Grey",
+    "size": ["S", "M", "L"],
+    "price": 800
+  },
+  {
+    "id": 7,
+    "name": "Hoodie",
+    "type": "Outerwear",
+    "color": "Yellow",
+    "size": ["M", "L", "XL"],
+    "price": 2000
+  }
+]
