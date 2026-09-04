@@ -10,7 +10,7 @@ import cors from "cors";
 const app = express();
 app.use(express.json());
 const corsOption = {
-  origin: ["http://localhost:5173"], // Allow only these origins
+  origin: ["http://localhost:5173", "http://localhost:3000"], // Allow only these origins
   methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
   allowedHeaders: ["Content-Type", "Authorization"], // Allowed custom headers
   optionsSuccessStatus: 200,
