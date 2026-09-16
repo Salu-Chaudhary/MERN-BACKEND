@@ -25,8 +25,6 @@ const createNewProduct = async (newProducts, file, userId) => {
 
 //READ
 const getAllProductsFromDB = async (query) => {
-  
-
   console.log(query);
   const { color, type, name, min_price, max_price, sortBy, limit, offset } =
     query;
@@ -34,7 +32,7 @@ const getAllProductsFromDB = async (query) => {
   const filters = {};
 
   if (color) filters.color = { $in: color.split(",") }; //from list items
-  if (type) filters.type = type;
+  if (type) filters.type = { $regex: type, $options: "i" };
   if (name) filters.name = { $regex: name, $options: "i" }; //case insensetive
 
   if (min_price) filters.price = { $gte: min_price };
@@ -52,7 +50,6 @@ const getAllProductsFromDB = async (query) => {
 
 //READ BY ID
 const getProductByIDFromDB = async (id) => {
-
   const data = await Product.findById(id);
   return data;
 };
