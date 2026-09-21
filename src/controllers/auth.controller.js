@@ -21,7 +21,7 @@ const login = async (req, res) => {
     //STORE TOKEN IN COOKIE
     res.cookie("authToken", token, { maxAge: 1000 * 60 * 60 * 24 });
 
-    res.status(200).json(user);
+    res.status(200).json({ ...user, token });
   } catch (error) {
     res.status(error?.status || 400).send(error.message);
   }
@@ -30,7 +30,22 @@ const login = async (req, res) => {
 const register = async (req, res) => {
   try {
     const user = await authService.register(req.body);
-    res.status(201).json(user);
+
+    const payload = {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      mobile: user.mobile,
+      address: user.address,
+      role: user.role,
+    };
+    //TOKEN GENERATE
+    const token = generateJWT(payload);
+
+    //STORE TOKEN IN COOKIE
+    res.cookie("authToken", token, { maxAge: 1000 * 60 * 60 * 24 });
+
+    res.status(201).json({ ...user, token });
   } catch (error) {
     res.status(error?.status || 400).send(error.message);
   }
