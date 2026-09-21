@@ -25,7 +25,13 @@ const login = async (data) => {
       message: "Incorrect email or password",
     };
 
-  return user;
+  return {
+    id: user._id,
+    name: user.name,
+    email: user.email,
+    role: user.role,
+    mobile: user.mobile,
+  };
 };
 
 //REGISTER
@@ -73,7 +79,6 @@ const forgetPassword = async (email) => {
 
   await ResetPassword.create({ token: hashedToken, user: user._id });
 
- 
   const resetPasswordLink = `${config.appUrl}/forget-password?token=${token}`;
 
   try {

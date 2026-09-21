@@ -11,7 +11,7 @@ const userRegisterSchema = z.object({
   password: z
     .string()
     .min(8, "Password length must be at least 8 character long"),
-  role: z.array(z.enum([ADMIN_ROLE, MERCHANT_ROLE, USER_ROLE])),
+  role: z.enum([ADMIN_ROLE, MERCHANT_ROLE, USER_ROLE]),
 });
 
 export default userRegisterSchema;
