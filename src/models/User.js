@@ -21,6 +21,19 @@ const userSchema = new mongoose.Schema({
     required: [true, "password is required!!"],
     minLength: [8, "Password should be 8 character long"],
   },
+  address: {
+    country: {
+      type: String,
+    },
+    province: {
+      type: String,
+      required: true,
+    },
+    city: {
+      type: String,
+      required: true,
+    },
+  },
   role: {
     type: [String],
     enum: ["MERCHANT", "USER", "ADMIN"],
