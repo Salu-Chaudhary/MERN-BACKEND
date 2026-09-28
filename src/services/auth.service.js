@@ -57,7 +57,13 @@ const register = async (data) => {
     address: data.address,
     role: data.role,
   });
-  return createdUser;
+  return {
+    name: createdUser.name,
+    email: createdUser.email,
+    mobile: createdUser.mobile,
+    address: createdUser.address,
+    role: createdUser.role,
+  };
 };
 
 //FORGET - PASSWORD
