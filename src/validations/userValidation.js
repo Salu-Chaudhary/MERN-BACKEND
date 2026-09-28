@@ -16,7 +16,7 @@ const userRegisterSchema = z.object({
     province: z.string().min(3, { message: "Province is required" }),
     city: z.string().min(3, { message: "City is required" }),
   }),
-  role: z.enum([ADMIN_ROLE, MERCHANT_ROLE, USER_ROLE]),
+  role: z.enum([ADMIN_ROLE, MERCHANT_ROLE, USER_ROLE]).default(USER_ROLE),
 });
 
 export default userRegisterSchema;
