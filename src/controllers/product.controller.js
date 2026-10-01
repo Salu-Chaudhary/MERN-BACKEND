@@ -5,7 +5,7 @@ const createdProduct = async (req, res) => {
     const newProducts = req.body;
     const data = await productService.createNewProduct(
       newProducts,
-      req.file,
+      req.files,
       req.user._id,
     );
     return res.status(201).json(data);

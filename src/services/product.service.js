@@ -3,20 +3,27 @@ import Product from "../models/Products.js";
 import { fileUploader } from "../utils/cloudinaryUploader.js";
 
 //CREATE
-const createNewProduct = async (newProducts, file, userId) => {
-  if (!file)
+const createNewProduct = async (newProducts, files, userId) => {
+  if (!files)
     throw {
       status: 400,
       message: "File required",
     };
 
-  const cloudinaryResult = await fileUploader(file.buffer);
+  // const cloudinaryResult = await fileUploader(file.buffer);
+
+  //parallel image upload
+  const uploadPromises = files.map((file) => fileUploader(file.buffer));
+  const cloudinaryResult = await Promise.all(uploadPromises);
+
+  const imageUrls = cloudinaryResult.map((result) => result.secure_url);
 
   console.log(cloudinaryResult);
 
   const product = await Product.create({
     ...newProducts,
-    imageUrl: cloudinaryResult.secure_url,
+    // imageUrl: cloudinaryResult.secure_url,
+    imageUrl: imageUrls,
     user: userId,
   });
 

@@ -28,7 +28,7 @@ const productSchema = new mongoose.Schema({
     max: [10000, "Price must be lower than 10000"],
   },
   imageUrl: {
-    type: String,
+    type: [String],
     required: [true, "Image URL is required"],
   },
   createdAt: {
