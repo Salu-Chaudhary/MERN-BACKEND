@@ -14,7 +14,7 @@ router.get("/products/:id", productController.getProductByID);
 
 //POST
 router.post(
-  "/products/all",
+  "/products/create",
   auth,
   roleBasedAuth(MERCHANT_ROLE),
   upload.single("image"),
