@@ -6,17 +6,8 @@ const login = async (req, res) => {
   try {
     const user = await authService.login(req.body);
 
-    const payload = {
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-      mobile: user.mobile,
-      address: user.address,
-      role: user.role,
-    };
-
     //TOKEN GENERATE
-    const token = generateJWT(payload);
+    const token = generateJWT(user);
 
     //STORE TOKEN IN COOKIE
     res.cookie("authToken", token, { maxAge: 1000 * 60 * 60 * 24 });

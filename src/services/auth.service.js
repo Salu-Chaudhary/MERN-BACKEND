@@ -31,6 +31,7 @@ const login = async (data) => {
     email: user.email,
     role: user.role,
     mobile: user.mobile,
+    address: user.address,
   };
 };
 
