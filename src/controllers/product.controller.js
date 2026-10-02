@@ -10,7 +10,7 @@ const createdProduct = async (req, res) => {
     const data = await productService.createNewProduct(
       { ...req.body, color: colorArray, size: sizeArray },
       req.files,
-      req.user._id,
+      req.user.id,
     );
     return res.status(201).json(data);
   } catch (error) {
