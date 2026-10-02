@@ -1,11 +1,6 @@
 import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.ObjectId,
-    ref: "User",
-    required: [true, "User is required"],
-  },
   name: {
     type: String,
     required: [true, "Name is compulsory!!"],
@@ -35,6 +30,11 @@ const productSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
     immutable: true,
+  },
+  createdBy: {
+    type: mongoose.Schema.ObjectId,
+    ref: "User",
+    required: true,
   },
 });
 
