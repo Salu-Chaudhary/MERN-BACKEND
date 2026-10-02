@@ -24,7 +24,7 @@ const createNewProduct = async (newProducts, files, userId) => {
     ...newProducts,
     // imageUrl: cloudinaryResult.secure_url,
     imageUrl: imageUrls,
-    user: userId,
+    createdBy: userId,
   });
 
   return product;
