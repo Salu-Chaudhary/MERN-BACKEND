@@ -11,7 +11,7 @@ const productSchema = new mongoose.Schema({
     required: [true, "Name is compulsory!!"],
   },
   type: String,
-  color: String,
+  color: [String],
   size: [String],
   description: {
     type: String,
