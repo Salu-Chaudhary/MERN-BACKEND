@@ -23,6 +23,8 @@ const auth = async (req, res, next) => {
     // ["bearer", "sfslsjdsoifjsoidsjfsoifjdsoifsjfoidsfjsd"]
 
     const user = await verifyJWT(token);
+
+    console.log(user);
     req.user = user;
   } catch (error) {
     res.status(401).send("User not authenticated!!");
