@@ -2,9 +2,13 @@ import productService from "../services/product.service.js";
 //CREATE
 const createdProduct = async (req, res) => {
   try {
-    const newProducts = req.body;
+    const { color, size } = req.body;
+
+    const colorArray = color.split(",").map((color) => color.trim());
+    const sizeArray = size.split(",").map((size) => size.trim());
+
     const data = await productService.createNewProduct(
-      newProducts,
+      { ...req.body, color: colorArray, size: sizeArray },
       req.files,
       req.user._id,
     );

@@ -4,8 +4,8 @@ const productCreateSchema = z.object({
   description: z
     .string("Description is required")
     .min(10, "Description must be at least 10 character"),
-  color: z.array("Color is required"),
-  size: z.array(z.union([z.string(), z.number()])),
+  color: z.string("Color is required").min(1),
+  size: z.string("Size is required").min(1),
   type: z.string("Type is required"),
   price: z.coerce
     .number()
