@@ -31,7 +31,7 @@ router.delete(
 );
 
 //PATCH
-router.patch(
+router.put(
   "/products/:id",
   auth,
   roleBasedAuth(MERCHANT_ROLE),
