@@ -89,7 +89,7 @@ const updateProductToBD = async (data, files, productId) => {
     );
     return updatedProduct;
   } catch (error) {
-    throw { message: error };
+    throw { message: "Product Update failed" };
   }
 };
 
