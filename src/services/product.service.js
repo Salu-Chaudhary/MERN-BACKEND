@@ -65,7 +65,7 @@ const getProductByIDFromDB = async (id) => {
 const updateProductToBD = async (data, files, productId) => {
   const updateData = { ...data };
   try {
-    if (files && files.lenght > 0) {
+    if (files && files.length > 0) {
       //parallel image upload
       const uploadPromises = files.map((file) => fileUploader(file.buffer));
       const cloudinaryResult = await Promise.all(uploadPromises);
