@@ -45,9 +45,15 @@ const getProductByID = async (req, res) => {
 //UPDATE
 const updateProduct = async (req, res) => {
   try {
+    const { color, size } = req.body;
+
+    const colorArray = color.split(",").map((color) => color.trim());
+    const sizeArray = size.split(",").map((size) => size.trim());
+
     const product = await productService.updateProductToBD(
+      { ...req.body, color: colorArray, size: sizeArray },
+      req.files,
       req.params.id,
-      req.body,
     );
     res.json(product);
   } catch (error) {

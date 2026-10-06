@@ -35,6 +35,7 @@ router.patch(
   "/products/:id",
   auth,
   roleBasedAuth(MERCHANT_ROLE),
+  upload.array("images", 5),
   productController.updateProduct,
 );
 

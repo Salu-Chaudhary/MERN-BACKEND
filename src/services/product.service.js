@@ -62,11 +62,35 @@ const getProductByIDFromDB = async (id) => {
 };
 
 //UPDATE
-const updateProductToBD = async (id, body) => {
-  const updatedProduct = await Product.findByIdAndUpdate(id, body, {
-    new: true,
-  });
-  return updatedProduct;
+const updateProductToBD = async (data, files, productId) => {
+  const updateData = { ...data };
+  try {
+    if (files && files.lenght > 0) {
+      //parallel image upload
+      const uploadPromises = files.map((file) => fileUploader(file.buffer));
+      const cloudinaryResult = await Promise.all(uploadPromises);
+
+      //updated image url
+      const imageUrls = cloudinaryResult.map((result) => result.secure_url);
+
+      updateData.imageUrl = imageUrls;
+    } else {
+      //front end bata image aako xaina vane imageUrl lai delete garidine
+      //jasle garda couldinary ko image as-it-is rahanxa
+      delete updateData.imageUrl;
+    }
+
+    const updatedProduct = await Product.findByIdAndUpdate(
+      productId,
+      updateData,
+      {
+        new: true,
+      },
+    );
+    return updatedProduct;
+  } catch (error) {
+    throw { message: error };
+  }
 };
 
 //DELETE
