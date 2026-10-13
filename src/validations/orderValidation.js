@@ -14,7 +14,6 @@ const orderValidation = z.object({
     country: z.string().default("Nepal"),
     province: z.string("Province is required"),
     city: z.string("City is required"),
-    street: z.string("Street is required"),
   }),
 });
 

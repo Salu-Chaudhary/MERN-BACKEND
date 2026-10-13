@@ -51,10 +51,6 @@ const orderSchema = new mongoose.Schema({
       type: String,
       required: [true, "City is Required"],
     },
-    street: {
-      type: String,
-      required: [true, "Street is required"],
-    },
   },
   totalPrice: {
     type: Number,
